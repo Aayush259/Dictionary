@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import React from 'react';
+import { useEffect, useState } from 'react';
 import { WordDataContextProvider } from '../contexts/WordDataContext.jsx';
 import { Outlet } from 'react-router-dom';
 import searchDark from '../images/search-dark.svg';

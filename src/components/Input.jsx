@@ -1,3 +1,4 @@
+import React from 'react';
 import { useContext, useEffect, useRef } from 'react';
 import { WordDataContext } from '../contexts/WordDataContext';
 import { useSearchParams } from 'react-router-dom';

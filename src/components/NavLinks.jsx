@@ -1,3 +1,4 @@
+import React from 'react';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { WordDataContext } from '../contexts/WordDataContext';

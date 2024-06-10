@@ -30,14 +30,14 @@ button{
     gap:15px;
 }
 
-.header,.main{
+.header,.main,.footer{
     width:95vw;
     max-width:800px;
     margin:10px auto 0 auto;
     padding:1rem 0.5rem;
 }
 
-.header{
+.header,.footer{
     justify-content:space-between;
     flex-wrap:wrap;
     border-radius:0.5rem 0.5rem 0 0;
@@ -47,6 +47,19 @@ button{
     min-height:750px;
     border-radius:0 0 0.5rem 0.5rem;
     margin-bottom:1rem;
+}
+
+.socialLinksContainer{
+    width:100%;
+    gap:2.5rem;
+}
+
+.socialLinksContainer a{
+    transition:all 0.13s ease-in-out;
+}
+
+.socialLinksContainer a:hover{
+    transform:scale(1.1);
 }
 
 .optionBtnContainer{
@@ -170,11 +183,11 @@ input{
     color:#FFF;
 }
 
-.header.light,.main.light{
+.header.light,.main.light,.footer.light{
     background-color:var(--Light-Grayish-Blue-Hover);
 }
 
-.header.dark,.main.dark{
+.header.dark,.main.dark,.footer.dark{
     background-color:var(--Very-Dark-Desaturated-Blue);
 }
 
@@ -509,5 +522,10 @@ body{
 
     .historyBlock{
         flex-wrap:wrap;
+    }
+
+    .socialLinksContainer{
+        gap:0;
+        justify-content:space-around;
     }
 }

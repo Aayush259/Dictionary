@@ -1,3 +1,4 @@
+import React from 'react';
 import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { WordDataContext } from '../contexts/WordDataContext';

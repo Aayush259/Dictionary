@@ -1,3 +1,4 @@
+import React from 'react';
 import { useContext, useEffect } from 'react';
 import { WordDataContext } from '../contexts/WordDataContext';
 import Input from './Input';

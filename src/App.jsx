@@ -1,9 +1,11 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
-import Header from './components/Header';
 import './style.css';
+import Header from './components/Header';
 import MainSection from './components/MainSection';
+import Footer from './components/Footer';
 
-function App() {
+export default function App() {
 
   // Getting initialUserData from local storage. If it is not present then adding default data.
   const initialUserData = JSON.parse(localStorage.getItem('userData')) || ['dark', []];
@@ -29,9 +31,8 @@ function App() {
     <div id='body' className={`${theme} flex`}>
       <Header theme={theme} changeTheme={changeTheme} />
       <MainSection theme={theme} setUserData={setUserData} userData={userData} />
+      <Footer theme={theme} />
     </div>
     </>
   );
 };
-
-export default App;

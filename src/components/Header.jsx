@@ -1,3 +1,4 @@
+import React from 'react';
 import photo from '../images/photo.jpeg';
 import iconSun from '../images/icon-sun.svg';
 import iconMoon from '../images/icon-moon.svg';
