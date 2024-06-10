@@ -27,10 +27,14 @@ export default function Input() {
     useEffect(() => {
 
         if (word) {
+
+            // New abort controller.
+            const controller = new AbortController();
+
             setOutputSection(loader)
             const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
 
-            fetch(url)
+            fetch(url, { signal: controller.signal })
             .then(response => response.json())
             .then(data => setWordData(data))
             .catch(err => {
@@ -42,6 +46,12 @@ export default function Input() {
                 );
                 setOutputSection(fetchError);
             });
+
+            return () => {
+                if (controller) {
+                    controller.abort();
+                }
+            };
         } else {
             setOutputSection('');
         };
