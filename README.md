@@ -84,6 +84,12 @@ This Dictionary App is a React-based web application designed to help users look
   - Displays the date and the word user searched for previously.
   - Remove button to remove specific word from history.
   - Clear All button to clear history.
+
+### Footer.jsx
+
+- **Purpose:** The footer component that contains my three social links.
+- **Props:**
+  - *theme:* The current theme (light or dark).
  
 ### WordDataContext.jsx
 
