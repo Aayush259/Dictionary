@@ -10,7 +10,7 @@ import houseDark from '../images/house-dark.svg';
 import houseLight from '../images/house-light.svg';
 import xMarkDark from '../images/xmark-dark.svg';
 import xMarkLight from '../images/xmark-light.svg';
-import WordResult from "./WordResult";
+import WordResult from './WordResult';
 import NavLinks from './NavLinks.jsx';
 
 export default function MainSection({ theme, userData, setUserData }) {
@@ -54,6 +54,7 @@ export default function MainSection({ theme, userData, setUserData }) {
                     <p className='errorTitle'>{wordData["title"]}</p>
                     <p className='errorDescription'>{wordData["message"]}</p>
                     <p className='errorResolution'>{wordData["resolution"]}</p>
+                    <a className='linkToGoogle' href={`https://www.google.com/search?q=${word}%20meaning`} target='_blank'>Find on Google - {word}</a>
                 </div>
             );
 
@@ -104,5 +105,3 @@ export default function MainSection({ theme, userData, setUserData }) {
         </WordDataContextProvider>
     );
 };
-
-// https://www.google.com/search?q=chat
