@@ -6,10 +6,10 @@ This Dictionary App is a React-based web application designed to help users look
 
 ## Features
 
-- **Search:** Users can search for words and view their defintions.
+- **Search:** Users can search for words and view their definitions.
 - **Phonetics:** Provides audio pronunciation for words.
 - **History:** Keeps track of previously searched words.
-- **Light/Dark Theme:** Supportss both light and dark themes for better user experience.
+- **Light/Dark Theme:** Supports both light and dark themes for better user experience.
 
 ## Usage
 
@@ -33,7 +33,7 @@ This Dictionary App is a React-based web application designed to help users look
 
 ### App.jsx
 
-- **Purpose:** The main applicatoin that sets up the theme, handes user data, and renders the header and main section.
+- **Purpose:** The main application that sets up the theme, handles user data, and renders the header and main section.
 - **Key Features:**
   - Initializes user data from localStorage
   - Manages the theme state and provides a function to toggle themes.
@@ -127,7 +127,7 @@ This Dictionary App is a React-based web application designed to help users look
 
 ## Acknowledgements
 
-- Font: [Googel Fonts - Josefin Sans](https://fonts.google.com/specimen/Josefin+Sans)
+- Font: [Google Fonts - Josefin Sans](https://fonts.google.com/specimen/Josefin+Sans)
 - API: [Free Dictionary API](https://dictionaryapi.dev/)
 
 ## Contributing
