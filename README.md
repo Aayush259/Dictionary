@@ -15,10 +15,11 @@ This Dictionary App is a React-based web application designed to help users look
 
 1. Type a word in the search bar and press Enter or click the search button.
 2. View the word's definition, phonetics, synonyms, antonyms, and examples.
-3. Toggle between light and dark themes using the theme switcher in the header.
-4. Click on previously searched words in the history section to view their details.
-5. Click on cross icon to remove the word from history.
-6. Click on Clear All button to clear complete history.
+3. If word not found, then click on the *Google Link* to browse it on google.
+4. Toggle between light and dark themes using the theme switcher in the header.
+5. Click on previously searched words in the history section to view their details.
+6. Click on cross icon to remove the word from history.
+7. Click on Clear All button to clear complete history.
 
 ## Screenshots
 
