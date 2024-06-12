@@ -212,12 +212,12 @@ body{
     flex-direction:column;
 }
 
-#body.light{
+#body.light,.linkToGoogle{
     background-color:var(--Light-Grayish-Blue);
     color:var(--Very-Dark-Blue);
 }
 
-#body.dark{
+#body.dark,.linkToGoogle{
     background-color:var(--Very-Dark-Blue);
     color:#FFF;
 }
@@ -406,9 +406,21 @@ body{
     margin-left:10px;
 }
 
-.errorDescription,.errorResolution{
+.errorDescription,.errorResolution,.linkToGoogle{
+    display:block;
     margin:5px;
     margin-left:20px;
+    background-color:transparent;
+    text-underline-offset:4px;
+    transition:all 0.2s ease-in-out;
+}
+
+.linkToGoogle{
+    margin-top:20px;
+}
+
+.linkToGoogle:hover{
+    opacity:0.8;
 }
 
 .fetchError{
