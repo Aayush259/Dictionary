@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { Suspense, useCallback } from 'react';
 import { useEffect, useState } from 'react';
-import { WordDataContextProvider } from '../contexts/WordDataContext.jsx';
 import { Outlet } from 'react-router-dom';
 import searchDark from '../images/search-dark.svg';
 import searchLight from '../images/search-light.svg';
@@ -12,6 +11,9 @@ import xMarkDark from '../images/xmark-dark.svg';
 import xMarkLight from '../images/xmark-light.svg';
 import WordResult from './WordResult';
 import NavLinks from './NavLinks.jsx';
+import { WordDataContextProvider } from '../contexts/WordDataContext.jsx';
+import NotFoundError from './NotFoundError.jsx';
+import Loader from './Loader.jsx';
 
 export default function MainSection({ theme, userData, setUserData }) {
 
@@ -45,25 +47,15 @@ export default function MainSection({ theme, userData, setUserData }) {
     /*
         This function handles the wordData.
     */
-    const handleData = (data) => {
+    const handleData = useCallback(() => {
         // If the word not found, then show error message for the word not found, else display output.
-        if (data.title) {
-
-            const errorWordNotFound = (
-                <div className='error'>
-                    <p className='errorTitle'>{wordData["title"]}</p>
-                    <p className='errorDescription'>{wordData["message"]}</p>
-                    <p className='errorResolution'>{wordData["resolution"]}</p>
-                    <a className='linkToGoogle' href={`https://www.google.com/search?q=${word}%20meaning`} target='_blank'>Find on Google - {word}</a>
-                </div>
-            );
-
-            setOutputSection(errorWordNotFound);
+        if (wordData.title) {
+            setOutputSection(<NotFoundError wordData={wordData} />);
         } else {
 
-            const word = data[0]['word'];
-            const phonetics = data[0]['phonetics'];
-            const meanings = data[0]['meanings'];
+            const word = wordData[0]['word'];
+            const phonetics = wordData[0]['phonetics'];
+            const meanings = wordData[0]['meanings'];
 
             // Update user data in local storage.
             setUserData(prevData => {
@@ -83,16 +75,16 @@ export default function MainSection({ theme, userData, setUserData }) {
                 }
 
                 return [prevData[0], updatedArray]
-             })
+            });
 
             setOutputSection(<WordResult word={word} phonetics={phonetics} meanings={meanings} />);
         };
-    };
+    }, [wordData]);
 
     // Update the result view when user search for a word each time.
     useEffect(() => {
         if (wordData) {
-            handleData(wordData);
+            handleData();
         }
     }, [wordData]);
 
@@ -100,7 +92,9 @@ export default function MainSection({ theme, userData, setUserData }) {
         <WordDataContextProvider value={{homeLinkActive, setHomeLinkActive, homeIcon, searchIcon, historyIcon, xMarkIcon, word, outputSection, userData, setUserData, setSearchWord, setWordData, setOutputSection }}>
             <main className={`main ${theme}`}>
                 <NavLinks />
-                <Outlet />
+                <Suspense fallback={<Loader />}>
+                    <Outlet />
+                </Suspense>
             </main>
         </WordDataContextProvider>
     );

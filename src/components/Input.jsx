@@ -2,6 +2,7 @@ import React from 'react';
 import { useContext, useEffect, useRef } from 'react';
 import { WordDataContext } from '../contexts/WordDataContext';
 import { useSearchParams } from 'react-router-dom';
+import Loader from './Loader.jsx';
 
 export default function Input() {
 
@@ -9,15 +10,6 @@ export default function Input() {
 
     // Current URL string (query string).
     const [searchWordParam, setSearchWordParam] = useSearchParams();
-
-    // Loader
-    const loader = (
-        <div className='loaderContainer flex'>
-            <div className="circle"></div>
-            <div className="circle"></div>
-            <div className="circle"></div>
-        </div>
-    );
 
     // When searchWordParam change, then update the word state to the actual word in the searchWordParam ('word' query).
     useEffect(() => {
@@ -32,7 +24,7 @@ export default function Input() {
             // New abort controller.
             const controller = new AbortController();
 
-            setOutputSection(loader)
+            setOutputSection(<Loader />)
             const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
 
             fetch(url, { signal: controller.signal })
