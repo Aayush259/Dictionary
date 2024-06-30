@@ -1,10 +1,10 @@
-import React, { useCallback, useState } from 'react';
+import React, { lazy, Suspense, useCallback, useState } from 'react';
 import { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { WordDataContext } from '../contexts/WordDataContext.jsx';
-import Input from './Input.jsx';
-import WordResult from './WordResult.jsx';
-import NotFoundError from './NotFoundError.jsx';
+const Input = lazy(() => import('./Input.jsx'));
+const WordResult = lazy(() => import('./WordResult.jsx'));
+const NotFoundError = lazy(() => import('./NotFoundError.jsx'));
 import Loader from './Loader.jsx';
 
 export default function Search() {
@@ -93,7 +93,9 @@ export default function Search() {
     return (
         <>
         <Input />
-        {result}
+        <Suspense fallback={<Loader />}>
+            {result}
+        </Suspense>
         </>
     );
 };

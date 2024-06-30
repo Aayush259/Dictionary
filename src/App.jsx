@@ -1,9 +1,9 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import './style.css';
-import Header from './components/Header';
-import MainSection from './components/MainSection';
-import Footer from './components/Footer';
+import Loader from './components/Loader.jsx';
+const Header = lazy(() => import('./components/Header.jsx'));
+const MainSection = lazy(() => import('./components/MainSection.jsx'));
+const Footer = lazy(() => import('./components/Footer.jsx'));
 
 export default function App() {
 
@@ -29,9 +29,11 @@ export default function App() {
   return (
     <>
     <div id='body' className={`${theme} flex`}>
-      <Header theme={theme} changeTheme={changeTheme} />
-      <MainSection theme={theme} setUserData={setUserData} userData={userData} />
-      <Footer theme={theme} />
+      <Suspense fallback={<Loader />}>
+        <Header theme={theme} changeTheme={changeTheme} />
+        <MainSection theme={theme} setUserData={setUserData} userData={userData} />
+        <Footer theme={theme} />
+      </Suspense>
     </div>
     </>
   );
