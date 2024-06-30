@@ -4,12 +4,13 @@ import { useParams } from 'react-router-dom';
 import { WordDataContext } from '../contexts/WordDataContext.jsx';
 import Input from './Input.jsx';
 import WordResult from './WordResult.jsx';
+import NotFoundError from './NotFoundError.jsx';
 import Loader from './Loader.jsx';
 
 export default function Search() {
 
     // Getting outputSection and setHomeLinkActive setter from WordDataContext.
-    const { setHomeLinkActive } = useContext(WordDataContext);
+    const { setHomeLinkActive, setUserData } = useContext(WordDataContext);
 
     // Getting word parameter from URL.
     const { searchWordParam } = useParams();
@@ -17,15 +18,34 @@ export default function Search() {
     // Result state.
     const [result, setResult] = useState(null);
 
-    // Setting home link active state to false.
-    useEffect(() => {
-        setHomeLinkActive(false);
-    }, [setHomeLinkActive]);
+    // This function will handle fetched data from API and update the user's search history.
+    const handleWordData = useCallback((wordData) => {
+
+        // Update user data in local storage.
+        setUserData(prevData => {
+
+            // New object with the word user has searched for.
+            const newObject = {
+                id: Date.now(),
+                word: searchWordParam
+            };
+
+            // Updated array of word history data.
+            const updatedArray = [newObject, ...prevData[1]];
+
+            // If history is greater than 100, then remove the last data object from updatedArray.
+            if (updatedArray.length > 100) {
+                updatedArray.pop();
+            }
+
+            return [prevData[0], updatedArray];
+        });
+
+        wordData.title ? setResult(<NotFoundError wordData={wordData} />) : setResult(<WordResult wordData={wordData} />);
+    }, [searchWordParam, setUserData, setResult]);
 
     // This function fetches data from API and update the result on UI.
-    const fetchWordData = useCallback(() => {
-        // New abort controller.
-        const controller = new AbortController();
+    const fetchWordData = useCallback((controller) => {
 
         // While the data is fetching, display Loader.
         setResult(<Loader />);
@@ -34,7 +54,7 @@ export default function Search() {
 
         fetch(url, { signal: controller.signal })
         .then(response => response.json())
-        .then(data => setResult(<WordResult wordData={data} />))
+        .then(data => handleWordData(data))
         .catch(err => {
             console.log('Error:', err);
             const fetchError = (
@@ -45,18 +65,28 @@ export default function Search() {
 
             setResult(fetchError);
         });
+    }, [searchWordParam, setResult]);
 
-        return () => {
-            if (controller) {
-                controller.abort();
-            }
-        };
-    }, [searchWordParam]);
+    // Setting home link active state to false.
+    useEffect(() => {
+        setHomeLinkActive(false);
+    }, [setHomeLinkActive]);
 
     // Search for data when the searchWordParam is changed.
     useEffect(() => {
         if (searchWordParam) {
-            fetchWordData();
+            // New abort controller.
+            const controller = new AbortController();
+
+            // Fetch word data.
+            fetchWordData(controller);
+
+            // Cleanup function.
+            return () => {
+                if (controller) {
+                    controller.abort();
+                }
+            };
         }
     }, [searchWordParam, fetchWordData]);
 
