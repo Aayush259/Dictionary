@@ -1,54 +1,14 @@
 import React from 'react';
-import { useContext, useEffect, useRef } from 'react';
-import { WordDataContext } from '../contexts/WordDataContext';
-import { useSearchParams } from 'react-router-dom';
-import Loader from './Loader.jsx';
+import { useContext, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { WordDataContext } from '../contexts/WordDataContext.jsx';
 
 export default function Input() {
 
-    const { searchIcon, word, setSearchWord, setWordData, setOutputSection } = useContext(WordDataContext);
+    // Getting search icon from context.
+    const { searchIcon } = useContext(WordDataContext);
 
-    // Current URL string (query string).
-    const [searchWordParam, setSearchWordParam] = useSearchParams();
-
-    // When searchWordParam change, then update the word state to the actual word in the searchWordParam ('word' query).
-    useEffect(() => {
-        setSearchWord(searchWordParam.get('word'));
-    }, [searchWordParam]);
-
-    // This useEffect will create a side effect when the word state is changed, means when user search for a word.
-    useEffect(() => {
-
-        if (word) {
-
-            // New abort controller.
-            const controller = new AbortController();
-
-            setOutputSection(<Loader />)
-            const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
-
-            fetch(url, { signal: controller.signal })
-            .then(response => response.json())
-            .then(data => setWordData(data))
-            .catch(err => {
-                console.log('Error:', err);
-                const fetchError = (
-                    <div>
-                        <p className='fetchError'>Something went wrong, try again... 😬</p>
-                    </div>
-                );
-                setOutputSection(fetchError);
-            });
-
-            return () => {
-                if (controller) {
-                    controller.abort();
-                }
-            };
-        } else {
-            setOutputSection('');
-        };
-    }, [word]);
+    const navigate = useNavigate();
 
     // Reference for input element.
     const inputRef = useRef();
@@ -57,17 +17,32 @@ export default function Input() {
         This function updates the searchWordParam (search query or URL of the page).
     */
     const handleSearchBtnClick = () => {
-        // Getting the input element value.
         const wordToSearch = inputRef.current.value.toString();
-        setSearchWordParam({'word': wordToSearch});
+        // setSearchWordParam({'word': wordToSearch});
+
+        if (wordToSearch) {
+            navigate(`/Dictionary/search/${wordToSearch}`);
+        };
     }
 
     return (
         <div className='search'>
             <label htmlFor="searchWord" className='flex'>
-                <input type="text" name="word" id="searchWord" placeholder="Search for a word..." ref={inputRef} onKeyDown={(e) => {if (e.key === 'Enter') handleSearchBtnClick()}} />
+                <input
+                    type="text"
+                    name="word"
+                    id="searchWord"
+                    placeholder="Search for a word..."
+                    ref={inputRef}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') handleSearchBtnClick()
+                    }}
+                />
                 <button className='searchWordBtn' onClick={handleSearchBtnClick}>
-                    <img src={searchIcon} alt="Search" height={20} />
+                    <img
+                        src={searchIcon}
+                        alt="Search"
+                        height={20} />
                 </button>
             </label>
         </div>

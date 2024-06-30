@@ -1,7 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
 
-export default function WordResult({word, phonetics, meanings}) {
+export default function WordResult({wordData}) {
+
+    // Getting word, phonetics, and meanings from wordData.
+    const word = wordData[0]['word'];
+    const phonetics = wordData[0]['phonetics'];
+    const meanings = wordData[0]['meanings'];
 
     // State for the audio index which will play when it's corresponding button is cliked.
     const [audioPlayingIndex, setAudioPlayingIndex] = useState(null);
