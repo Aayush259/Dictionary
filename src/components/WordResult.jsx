@@ -1,5 +1,5 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 export default function WordResult({wordData}) {
 
@@ -72,4 +72,8 @@ export default function WordResult({wordData}) {
             </div>
         </div>
     );
+};
+
+WordResult.propTypes = {
+    wordData: PropTypes.object.isRequired,
 };

@@ -1,5 +1,6 @@
 import React, { Suspense, useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import searchDark from '../images/search-dark.svg';
 import searchLight from '../images/search-light.svg';
 import historyDark from '../images/clock-rotate-left-dark.svg';
@@ -42,4 +43,10 @@ export default function MainSection({ theme, userData, setUserData }) {
             </main>
         </WordDataContextProvider>
     );
+};
+
+MainSection.propTypes = {
+    theme: PropTypes.string.isRequired,
+    userData: PropTypes.array.isRequired,
+    setUserData: PropTypes.func.isRequired,
 };

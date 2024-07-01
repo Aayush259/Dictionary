@@ -16,7 +16,7 @@ export default function WelcomeScreen() {
     const wordCards = [
         {
             title: `Hello`,
-            definition: `A greeting (salutation) said when meeting someone or acknowledging someone’s arrival or presence.`
+            definition: `A greeting (salutation) said when meeting someone or acknowledging someone's arrival or presence.`
         },
         {
             title: `Genius`,
@@ -24,7 +24,7 @@ export default function WelcomeScreen() {
         },
         {
             title: `Welcome`,
-            definition: `The act of greeting someone’s arrival.`
+            definition: `The act of greeting someone's arrival.`
         },
         {
             title: `Mistake`,

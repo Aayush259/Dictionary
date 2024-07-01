@@ -8,6 +8,7 @@ export default function Input() {
     // Getting search icon from context.
     const { searchIcon } = useContext(WordDataContext);
 
+    // Navigate function.
     const navigate = useNavigate();
 
     // Reference for input element.
@@ -23,7 +24,7 @@ export default function Input() {
         if (wordToSearch) {
             navigate(`/Dictionary/search/${wordToSearch}`);
         };
-    }
+    };
 
     return (
         <div className='search'>

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import xDark from '../images/x-twitter-dark.svg';
 import xLight from '../images/x-twitter-light.svg';
 import linkedinDark from '../images/linkedin-dark.svg';
@@ -36,4 +37,8 @@ export default function Footer({ theme }) {
             <div className='about'></div>
         </footer>
     );
+};
+
+Footer.propTypes = {
+    theme: PropTypes.string.isRequired,
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import photo from '../images/photo.jpeg';
 import iconSun from '../images/icon-sun.svg';
 import iconMoon from '../images/icon-moon.svg';
@@ -19,4 +20,9 @@ export default function Header({theme, changeTheme}) {
             </div>
         </header>
     );
+};
+
+Header.propTypes = {
+    theme: PropTypes.string.isRequired,
+    changeTheme: PropTypes.func.isRequired,
 };

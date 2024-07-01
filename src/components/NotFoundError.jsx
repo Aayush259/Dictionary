@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function NotFoundError({ wordData }) {
 
@@ -10,4 +11,8 @@ export default function NotFoundError({ wordData }) {
         <a className='linkToGoogle' href={`https://www.google.com/search?q=${wordData.title}%20meaning`} target='_blank'>Find on Google - {wordData.title}</a>
     </div>
   );
+};
+
+NotFoundError.propTypes = {
+  wordData: PropTypes.object.isRequired,
 };
