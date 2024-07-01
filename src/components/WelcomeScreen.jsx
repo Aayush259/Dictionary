@@ -40,7 +40,7 @@ export default function WelcomeScreen() {
                     <div className='wordCard' key={card["title"]}>
                         <p className='title'>{card["title"]}</p>
                         <p className='welcomeWordDefinition'>{card["definition"]}</p>
-                        <Link to={`/Dictionary/search?word=${card['title']}`} className={`knowMoreLink`}>
+                        <Link to={`/Dictionary/search/${card['title']}`} className={`knowMoreLink`}>
                             Know More
                         </Link>
                     </div>
