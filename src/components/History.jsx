@@ -1,11 +1,10 @@
-import React from 'react';
-import { useContext, useEffect } from 'react';
-import { WordDataContext } from '../contexts/WordDataContext';
+import React, { useEffect } from 'react';
+import { useWordDataContext } from '../contexts/WordDataContext';
 import { Link } from 'react-router-dom';
 
 export default function History() {
 
-    const { userData, xMarkIcon, setUserData, setHomeLinkActive } = useContext(WordDataContext);
+    const { userData, xMarkIcon, setUserData, setHomeLinkActive } = useWordDataContext();
 
     // Setting home link active state to false.
     useEffect(() => {

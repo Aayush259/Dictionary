@@ -75,5 +75,5 @@ export default function WordResult({wordData}) {
 };
 
 WordResult.propTypes = {
-    wordData: PropTypes.object.isRequired,
+    wordData: PropTypes.array.isRequired,
 };

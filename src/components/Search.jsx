@@ -1,7 +1,6 @@
-import React, { lazy, Suspense, useCallback, useState } from 'react';
-import { useContext, useEffect } from 'react';
+import React, { lazy, Suspense, useCallback, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { WordDataContext } from '../contexts/WordDataContext.jsx';
+import { useWordDataContext } from '../contexts/WordDataContext.jsx';
 const Input = lazy(() => import('./Input.jsx'));
 const WordResult = lazy(() => import('./WordResult.jsx'));
 const NotFoundError = lazy(() => import('./NotFoundError.jsx'));
@@ -10,7 +9,7 @@ import Loader from './Loader.jsx';
 export default function Search() {
 
     // Getting outputSection and setHomeLinkActive setter from WordDataContext.
-    const { setHomeLinkActive, setUserData } = useContext(WordDataContext);
+    const { setHomeLinkActive, setUserData } = useWordDataContext();
 
     // Getting word parameter from URL.
     const { searchWordParam } = useParams();

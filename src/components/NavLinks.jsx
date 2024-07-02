@@ -1,12 +1,11 @@
-import React from 'react';
-import { useContext, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { WordDataContext } from '../contexts/WordDataContext';
+import { useWordDataContext } from '../contexts/WordDataContext';
 
 export default function NavLinks() {
 
     // Getting historyIcon and searchIcon from WordDataContext.
-    const { homeIcon, searchIcon, historyIcon, homeLinkActive } = useContext(WordDataContext);
+    const { homeIcon, searchIcon, historyIcon, homeLinkActive } = useWordDataContext();
 
     // State for hamburger button to track it's active or inActive stage.
     const [hamActiveState, setHamActiveState] = useState('inActive');

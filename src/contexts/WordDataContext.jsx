@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { createContext, useContext } from 'react';
 
 // Create a context
-const WordDataContext = React.createContext();
+const WordDataContext = createContext();
 
 // Provider component
 const WordDataContextProvider = ({ children, value }) => {
@@ -12,4 +12,8 @@ const WordDataContextProvider = ({ children, value }) => {
     );
 };
 
-export { WordDataContext, WordDataContextProvider };
+const useWordDataContext = () => {
+    return useContext(WordDataContext);
+};
+
+export { WordDataContext, WordDataContextProvider, useWordDataContext };

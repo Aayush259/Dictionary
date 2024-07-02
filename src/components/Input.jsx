@@ -1,12 +1,11 @@
-import React from 'react';
-import { useContext, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { WordDataContext } from '../contexts/WordDataContext.jsx';
+import { useWordDataContext } from '../contexts/WordDataContext.jsx';
 
 export default function Input() {
 
     // Getting search icon from context.
-    const { searchIcon } = useContext(WordDataContext);
+    const { searchIcon } = useWordDataContext();
 
     // Navigate function.
     const navigate = useNavigate();

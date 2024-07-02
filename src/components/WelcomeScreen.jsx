@@ -1,11 +1,10 @@
-import React from 'react';
-import { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { WordDataContext } from '../contexts/WordDataContext';
+import { useWordDataContext } from '../contexts/WordDataContext';
 
 export default function WelcomeScreen() {
 
-    const { setHomeLinkActive } = useContext(WordDataContext);
+    const { setHomeLinkActive } = useWordDataContext();
 
     // Home state is active when this component is rendered.
     useEffect(() => {
