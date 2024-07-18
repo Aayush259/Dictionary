@@ -60,7 +60,7 @@ export default function History() {
                                 formatDate(data['id'])
                             }</p>
 
-                            <Link to={`/Dictionary/search?word=${data['word']}`} className='historyWord'>{
+                            <Link to={`/Dictionary/search/${data['word']}`} className='historyWord'>{
                                 data['word'].charAt(0).toUpperCase() + data['word'].slice(1)
                             }</Link>
                         </div>
