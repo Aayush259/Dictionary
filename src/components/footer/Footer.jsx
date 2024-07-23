@@ -6,6 +6,7 @@ import linkedinDark from '../../images/linkedin-dark.svg';
 import linkedinLight from '../../images/linkedin-light.svg';
 import githubDark from '../../images/github-dark.svg';
 import githubLight from '../../images/github-light.svg';
+import FooterLink from './FooterLink';
 
 export default function Footer({ theme }) {
 
@@ -15,24 +16,30 @@ export default function Footer({ theme }) {
         'dark':  {x: xLight, linkedin: linkedinLight, github: githubLight}
     };
 
-    const githubIcon = iconMap[theme]['github'];
-    const xIcon = iconMap[theme]['x'];
-    const linkedinIcon = iconMap[theme]['linkedin'];
+    // This function generates a link object which contains necessary details about link.
+    const getLinkObject = (linkName, linkTo, linkIcon) => ({
+        linkName,
+        linkTo,
+        linkIcon,
+    });
+
+    // Array of objects for all social links.
+    const allSocialLinks = [
+        getLinkObject('Twitter/X', 'https://x.com/Aayush259_', iconMap[theme]['x']),
+        getLinkObject('GitHub', 'https://github.com/Aayush259', iconMap[theme]['github']),
+        getLinkObject('LinkedIn', 'https://www.linkedin.com/in/aayush-kumar-kumawat/', iconMap[theme]['linkedin']),
+    ];
 
     return (
         <footer className={`footer ${theme}`}>
             <div className='socialLinksContainer flex'>
-                <a href='https://x.com/Aayush259_' className='socialLink' target='_blank'>
-                    <img src={xIcon} alt="Aayush's twitter/X" height={25} />
-                </a>
+                
+                {
+                    allSocialLinks.map(link => (
+                        <FooterLink key={link['linkName']} linkDetails={link} />
+                    ))
+                }
 
-                <a href='https://github.com/Aayush259' className='socialLink' target='_blank'>
-                    <img src={githubIcon} alt="Aayush's twitter/X" height={25} />
-                </a>
-
-                <a href='https://www.linkedin.com/in/aayush-kumar-kumawat/' className='socialLink' target='_blank'>
-                    <img src={linkedinIcon} alt="Aayush's twitter/X" height={25} />
-                </a>
             </div>
             <div className='about'></div>
         </footer>
