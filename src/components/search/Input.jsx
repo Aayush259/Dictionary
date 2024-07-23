@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useWordDataContext } from '../contexts/WordDataContext.jsx';
+import { useWordDataContext } from '../../contexts/WordDataContext.jsx';
 
 export default function Input() {
 

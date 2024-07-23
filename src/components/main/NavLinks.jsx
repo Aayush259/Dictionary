@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useWordDataContext } from '../contexts/WordDataContext';
+import { useWordDataContext } from '../../contexts/WordDataContext';
 
 export default function NavLinks() {
 

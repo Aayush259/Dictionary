@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import xDark from '../images/x-twitter-dark.svg';
-import xLight from '../images/x-twitter-light.svg';
-import linkedinDark from '../images/linkedin-dark.svg';
-import linkedinLight from '../images/linkedin-light.svg';
-import githubDark from '../images/github-dark.svg';
-import githubLight from '../images/github-light.svg';
+import xDark from '../../images/x-twitter-dark.svg';
+import xLight from '../../images/x-twitter-light.svg';
+import linkedinDark from '../../images/linkedin-dark.svg';
+import linkedinLight from '../../images/linkedin-light.svg';
+import githubDark from '../../images/github-dark.svg';
+import githubLight from '../../images/github-light.svg';
 
 export default function Footer({ theme }) {
 

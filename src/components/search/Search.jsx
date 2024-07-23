@@ -1,10 +1,10 @@
 import React, { lazy, Suspense, useCallback, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useWordDataContext } from '../contexts/WordDataContext.jsx';
+import { useWordDataContext } from '../../contexts/WordDataContext.jsx';
 const Input = lazy(() => import('./Input.jsx'));
 const WordResult = lazy(() => import('./WordResult.jsx'));
-const NotFoundError = lazy(() => import('./NotFoundError.jsx'));
-import Loader from './Loader.jsx';
+const NotFoundError = lazy(() => import('../error/NotFoundError.jsx'));
+import Loader from '../Loader.jsx';
 
 export default function Search() {
 

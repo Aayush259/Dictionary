@@ -2,9 +2,9 @@ import React, { lazy } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import App from './App.jsx';
-const History = lazy(() => import('./components/History.jsx'));
-const WelcomeScreen = lazy(() => import('./components/WelcomeScreen.jsx'));
-const Search = lazy(() => import('./components/Search.jsx'));
+const History = lazy(() => import('./components/history/History.jsx'));
+const WelcomeScreen = lazy(() => import('./components/welcomeScreen/WelcomeScreen.jsx'));
+const Search = lazy(() => import('./components/search/Search.jsx'));
 
 const router = createBrowserRouter(
   createRoutesFromElements(

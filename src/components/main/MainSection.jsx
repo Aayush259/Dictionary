@@ -1,17 +1,17 @@
 import React, { Suspense, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import searchDark from '../images/search-dark.svg';
-import searchLight from '../images/search-light.svg';
-import historyDark from '../images/clock-rotate-left-dark.svg';
-import historyLight from '../images/clock-rotate-left-light.svg';
-import houseDark from '../images/house-dark.svg';
-import houseLight from '../images/house-light.svg';
-import xMarkDark from '../images/xmark-dark.svg';
-import xMarkLight from '../images/xmark-light.svg';
-import { WordDataContextProvider } from '../contexts/WordDataContext.jsx';
+import searchDark from '../../images/search-dark.svg';
+import searchLight from '../../images/search-light.svg';
+import historyDark from '../../images/clock-rotate-left-dark.svg';
+import historyLight from '../../images/clock-rotate-left-light.svg';
+import houseDark from '../../images/house-dark.svg';
+import houseLight from '../../images/house-light.svg';
+import xMarkDark from '../../images/xmark-dark.svg';
+import xMarkLight from '../../images/xmark-light.svg';
+import { WordDataContextProvider } from '../../contexts/WordDataContext.jsx';
 import NavLinks from './NavLinks.jsx';
-import Loader from './Loader.jsx';
+import Loader from '../Loader.jsx';
 
 export default function MainSection({ theme, userData, setUserData }) {
 

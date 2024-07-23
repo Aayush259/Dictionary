@@ -1,9 +1,9 @@
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import './style.css';
 import Loader from './components/Loader.jsx';
-const Header = lazy(() => import('./components/Header.jsx'));
-const MainSection = lazy(() => import('./components/MainSection.jsx'));
-const Footer = lazy(() => import('./components/Footer.jsx'));
+const Header = lazy(() => import('./components/header/Header.jsx'));
+const MainSection = lazy(() => import('./components/main/MainSection.jsx'));
+const Footer = lazy(() => import('./components/footer/Footer.jsx'));
 
 export default function App() {
 

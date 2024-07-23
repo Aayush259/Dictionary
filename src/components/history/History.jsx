@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useWordDataContext } from '../contexts/WordDataContext';
+import { useWordDataContext } from '../../contexts/WordDataContext';
 import { Link } from 'react-router-dom';
 
 export default function History() {
