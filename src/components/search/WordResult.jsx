@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 
-export default function WordResult({wordData}) {
+export default function WordResult({ wordData }) {
 
     // Getting word, phonetics, and meanings from wordData.
     const word = wordData[0]['word'];
@@ -12,19 +13,39 @@ export default function WordResult({wordData}) {
     const [audioPlayingIndex, setAudioPlayingIndex] = useState(null);
 
     return (
-        <div className='result'>
-            <p className='word'>{word}</p>
-            <div className='wordDetails'>
-                <div className='phonetics flex'>
+        <div
+            className="w-[95%] mx-auto mb-10 text-slate-800"
+        >
+            <p
+                className="text-violet-900 capitalize text-2xl sm:text-3xl font-semibold"
+            >
+                {word}
+            </p>
+            <div className="pl-1">
+
+                <div
+                    className="flex justify-start gap-10 my-3 opacity-80 flex-wrap"
+                >
                     {
                         phonetics.map((phonetic, index) => {
                             if (phonetic["text"] && phonetic["audio"]) {
                                 return (
-                                    <div className='phonetic flex' key={index}>
+                                    <div
+                                        key={index}
+                                        className="flex gap-2"
+                                    >
                                         <span className='phoneticText'>{phonetic["text"]}</span>
-                                        <button className='voicePlayBtn' onClick={() => {setAudioPlayingIndex(index)}}>
+
+                                        <button
+                                            className="h-5 w-5"
+                                            onClick={() => { setAudioPlayingIndex(index) }}
+                                        >
+                                            <FontAwesomeIcon
+                                                icon="fa-solid fa-volume-high"
+                                            />
                                         </button>
-                                        {audioPlayingIndex === index && (<audio src={phonetic["audio"]} controls autoPlay onEnded={() => {setAudioPlayingIndex(null)}} style={{position: 'absolute', top: '-100vh'}}></audio>)}
+
+                                        {audioPlayingIndex === index && (<audio src={phonetic["audio"]} controls autoPlay onEnded={() => { setAudioPlayingIndex(null) }} className="absolute top-[-100vh]"></audio>)}
                                     </div>
                                 )
                             }
@@ -32,26 +53,38 @@ export default function WordResult({wordData}) {
                     }
                 </div>
 
-                <div className='meaningContainer'>
+                <div>
                     {
                         meanings.map((meaning, index) => {
 
                             return (
-                                <div className='meaning' key={index}>
-                                    <p className='partOfSpeechTitle'>{meaning["partOfSpeech"]}</p>
+                                <div
+                                    key={index}
+                                    className="text-lg sm:text-xl"
+                                >
+                                    <p
+                                        className="text-xl sm:text-2xl text-violet-900 capitalize mt-4"
+                                    >
+                                        🔹{meaning["partOfSpeech"]}
+                                    </p>
                                     {
                                         meaning["definitions"].map((definition, index) => {
                                             return (
-                                                <div key={index}>
-                                                    <p className='definition'>{definition["definition"]}</p>
+                                                <div 
+                                                key={index}
+                                                className="pl-9"
+                                                >
+                                                    <p>
+                                                        {definition["definition"]}
+                                                    </p>
                                                     {
-                                                        definition["synonyms"].length > 0 && (<p className='synonym'><span>&nbsp;&mdash; Synonyms: </span>{definition["synonyms"].join(',')}</p>)
+                                                        definition["synonyms"].length > 0 && (<p className="my-1"><span className="font-bold">&nbsp;&mdash; Synonyms: </span>{definition["synonyms"].join(',')}</p>)
                                                     }
                                                     {
-                                                        definition["antonyms"].length > 0 && (<p className='antonym'><span>&nbsp;&mdash; Antonyms: </span>{definition["antonyms"].join(',')}</p>)
+                                                        definition["antonyms"].length > 0 && (<p className="my-1"><span className="font-bold">&nbsp;&mdash; Antonyms: </span>{definition["antonyms"].join(',')}</p>)
                                                     }
                                                     {
-                                                        definition["example"] && (<p className='example'><span>&nbsp;&mdash; Example: </span>{definition["example"]}</p>)
+                                                        definition["example"] && (<p className="my-1"><span className="font-bold">&nbsp;&mdash; Example: </span>{definition["example"]}</p>)
                                                     }
 
                                                 </div>
@@ -59,10 +92,10 @@ export default function WordResult({wordData}) {
                                         })
                                     }
                                     {
-                                        meaning["synonyms"].length > 0 && (<p className='synonym last'><span>Synonyms: </span>{meaning["synonyms"].join(', ')}</p>)
+                                        meaning["synonyms"].length > 0 && (<p className="pl-10 my-1"><span className="font-bold">Synonyms: </span>{meaning["synonyms"].join(', ')}</p>)
                                     }
                                     {
-                                        meaning["antonyms"].length > 0 && (<p className='antonym last'><span>Antonyms: </span>{meaning["antonyms"].join(', ')}</p>)
+                                        meaning["antonyms"].length > 0 && (<p className="pl-10 my-1"><span className="font-bold">Antonyms: </span>{meaning["antonyms"].join(', ')}</p>)
                                     }
                                 </div>
                             )
