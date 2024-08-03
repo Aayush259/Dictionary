@@ -1,15 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { useWordDataContext } from '../../contexts/WordDataContext';
 
 export default function WelcomeScreen() {
-
-    const { setHomeLinkActive } = useWordDataContext();
-
-    // Home state is active when this component is rendered.
-    useEffect(() => {
-        setHomeLinkActive(true);
-    });
 
     // Array of objects for initial word cards.
     const wordCards = [

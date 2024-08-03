@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import searchDark from '../../images/search-dark.svg';
@@ -27,14 +27,8 @@ export default function MainSection({ theme, userData, setUserData }) {
     const homeIcon = iconMap[theme].home;
     const xMarkIcon = iconMap[theme].xMark;
 
-    /*
-        State for checking whether the user is on Home page or not.
-        Due to custom paths in router for GitHub pages deployment, the Home state is always active.
-    */
-    const [homeLinkActive, setHomeLinkActive] = useState(true);
-
     return (
-        <WordDataContextProvider value={{homeLinkActive, setHomeLinkActive, homeIcon, searchIcon, historyIcon, xMarkIcon, userData, setUserData,  }}>
+        <WordDataContextProvider value={{ homeIcon, searchIcon, historyIcon, xMarkIcon, userData, setUserData }}>
             <main className={`main ${theme}`}>
                 <NavLinks />
                 <Suspense fallback={<Loader />}>

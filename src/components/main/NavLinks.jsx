@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useWordDataContext } from '../../contexts/WordDataContext';
+import { useWordDataContext } from '../../contexts/WordDataContext.jsx';
 
 export default function NavLinks() {
 
     // Getting historyIcon and searchIcon from WordDataContext.
-    const { homeIcon, searchIcon, historyIcon, homeLinkActive } = useWordDataContext();
+    const { homeIcon, searchIcon, historyIcon } = useWordDataContext();
 
     // State for hamburger button to track it's active or inActive stage.
     const [hamActiveState, setHamActiveState] = useState('inActive');
@@ -22,7 +22,7 @@ export default function NavLinks() {
 
         const handleClick = (e) => {
             // If the click is on the menu, then don't hide it, else hides it.
-            if (!menuRef.current.contains(e.target)){
+            if (!menuRef.current.contains(e.target)) {
                 hideOptionBtnContainer();
             };
         };
@@ -41,65 +41,60 @@ export default function NavLinks() {
 
     return (
         <>
-        <div className='menu' ref={menuRef}>
-            <button 
-                type='button' 
-                className={`
+            <div className='menu' ref={menuRef}>
+                <button
+                    type='button'
+                    className={`
                     hamburger flex
                     ${hamActiveState}
                 `}
-                onClick={(e) => {
-                    setHamActiveState(prevState => prevState === 'inActive' ? 'active' : 'inActive');
-                    e.stopPropagation();
-                }}
-            >
-                <div className='bar'></div>
-                <div className='bar'></div>
-                <div className='bar'></div>
-            </button>
+                    onClick={(e) => {
+                        setHamActiveState(prevState => prevState === 'inActive' ? 'active' : 'inActive');
+                        e.stopPropagation();
+                    }}
+                >
+                    <div className='bar'></div>
+                    <div className='bar'></div>
+                    <div className='bar'></div>
+                </button>
 
-            <div style={{position: 'relative'}}>
-                <div className='optionBtnContainer flex'>
+                <div style={{ position: 'relative' }}>
+                    <div className='optionBtnContainer flex'>
 
-                    <li className='home'>
-                        <NavLink to={'/Dictionary/'}
-                            className={() => `
-                                navLink flex ${homeLinkActive ? 'active' : 'inactive'}
-                            `}
-                            onClick={hideOptionBtnContainer}
-                        >
-                            <img src={homeIcon} alt="home" height={14} />
-                            Home
-                        </NavLink>
-                    </li>
+                        <li className='home'>
+                            <NavLink to={'/Dictionary/'}
+                                end
+                                className={({ isActive }) => `${isActive ? "active" : "inactive"} navLink flex
+                                `}
+                            >
+                                <img src={homeIcon} alt="home" height={14} />
+                                Home
+                            </NavLink>
+                        </li>
 
-                    <li className='search'>
-                        <NavLink to={'/Dictionary/search'}
-                            className={({ isActive }) => `
-                                navLink flex ${isActive ? 'active' : 'inactive'}
-                            `}
-                            onClick={hideOptionBtnContainer}
-                        >
-                            <img src={searchIcon} alt="search" height={14} />
-                            Search
-                        </NavLink>
-                    </li>
+                        <li className='search'>
+                            <NavLink to={'/Dictionary/search'}
+                                className={({ isActive }) => `${isActive ? "active" : "inactive"} navLink flex
+                                `}
+                            >
+                                <img src={searchIcon} alt="search" height={14} />
+                                Search
+                            </NavLink>
+                        </li>
 
-                    <li className='history'>
-                        <NavLink to={'/Dictionary/history'}
-                            className={({ isActive }) => `
-                                navLink flex ${isActive ? 'active' : 'inactive'}
-                            `}
-                            onClick={hideOptionBtnContainer}
-                        >
-                            <img src={historyIcon} alt="history" height={15} />
-                            History
-                        </NavLink>
-                    </li>
-                    
+                        <li className='history'>
+                            <NavLink to={'/Dictionary/history'}
+                                className={({ isActive }) => `${isActive ? "active" : "inactive"} navLink flex
+                                `}
+                            >
+                                <img src={historyIcon} alt="history" height={15} />
+                                History
+                            </NavLink>
+                        </li>
+
+                    </div>
                 </div>
             </div>
-        </div>
         </>
     );
 };

@@ -9,7 +9,7 @@ import Loader from '../Loader.jsx';
 export default function Search() {
 
     // Getting outputSection and setHomeLinkActive setter from WordDataContext.
-    const { setHomeLinkActive, setUserData } = useWordDataContext();
+    const { setUserData } = useWordDataContext();
 
     // Getting word parameter from URL.
     const { searchWordParam } = useParams();
@@ -65,11 +65,6 @@ export default function Search() {
             setResult(fetchError);
         });
     }, [searchWordParam, setResult]);
-
-    // Setting home link active state to false.
-    useEffect(() => {
-        setHomeLinkActive(false);
-    }, [setHomeLinkActive]);
 
     // Search for data when the searchWordParam is changed.
     useEffect(() => {
