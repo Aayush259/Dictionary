@@ -13,6 +13,18 @@ export default function NavLinks() {
     // Reference to the menu.
     const menuRef = useRef();
 
+    const getLinkDetails = (name, link, icon) => ({
+        name, link, icon
+    });
+
+    const navLinkDetails = [
+        getLinkDetails('home', '/Dictionary/', homeIcon),
+
+        getLinkDetails('search', '/Dictionary/search', searchIcon),
+
+        getLinkDetails('history', '/Dictionary/history', historyIcon),
+    ];
+
     // This function hides the navlinks by setting the hamActiveState to inActive.
     const hideOptionBtnContainer = () => {
         setHamActiveState('inActive');
@@ -37,7 +49,7 @@ export default function NavLinks() {
         return () => {
             events.forEach((event) => document.removeEventListener(event, handleClick));
         };
-    });
+    }, []);
 
     return (
         <>
@@ -61,39 +73,28 @@ export default function NavLinks() {
                 <div style={{ position: 'relative' }}>
                     <div className='optionBtnContainer flex'>
 
-                        <li className='home'>
-                            <NavLink to={'/Dictionary/'}
-                                end
-                                className={({ isActive }) => `${isActive ? "active" : "inactive"} navLink flex
-                                `}
-                                onClick={hideOptionBtnContainer}
-                            >
-                                <img src={homeIcon} alt="home" height={14} />
-                                Home
-                            </NavLink>
-                        </li>
+                        {
+                            navLinkDetails.map(linkDetail => (
+                                <li
+                                    key={linkDetail['name']}
+                                    className={linkDetail['name']}
+                                >
+                                    <NavLink
+                                        to={linkDetail['link']}
+                                        end
+                                        className={({ isActive }) => `${isActive ? "active" : "inactive"} navLink flex`}
+                                        style={{textTransform: 'capitalize'}}
+                                    >
 
-                        <li className='search'>
-                            <NavLink to={'/Dictionary/search'}
-                                className={({ isActive }) => `${isActive ? "active" : "inactive"} navLink flex
-                                `}
-                                onClick={hideOptionBtnContainer}
-                            >
-                                <img src={searchIcon} alt="search" height={14} />
-                                Search
-                            </NavLink>
-                        </li>
-
-                        <li className='history'>
-                            <NavLink to={'/Dictionary/history'}
-                                className={({ isActive }) => `${isActive ? "active" : "inactive"} navLink flex
-                                `}
-                                onClick={hideOptionBtnContainer}
-                            >
-                                <img src={historyIcon} alt="history" height={15} />
-                                History
-                            </NavLink>
-                        </li>
+                                        <img
+                                            src={linkDetail['icon']}
+                                            alt={linkDetail['name']}
+                                            height={15} />
+                                        {linkDetail['name']}
+                                    </NavLink>
+                                </li>
+                            ))
+                        }
 
                     </div>
                 </div>
