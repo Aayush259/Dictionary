@@ -1,10 +1,11 @@
 import React from 'react';
 import { useWordDataContext } from '../../contexts/WordDataContext';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function History() {
 
-    const { userData, xMarkIcon, setUserData } = useWordDataContext();
+    const { userData, setUserData } = useWordDataContext();
 
     // This function removes the word data from localstorage whose id matches with the gived id.
     const removeDataItem = (id) => {
@@ -61,7 +62,7 @@ export default function History() {
                         </div>
 
                         <button type='button' onClick={() => removeDataItem(data['id'])}>
-                            <img src={xMarkIcon} alt="Remove" height={25} />
+                            <FontAwesomeIcon icon="fa-solid fa-trash" />
                         </button>
 
                     </div>

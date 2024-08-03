@@ -1,11 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useWordDataContext } from '../../contexts/WordDataContext.jsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function NavLinks() {
-
-    // Getting historyIcon and searchIcon from WordDataContext.
-    const { homeIcon, searchIcon, historyIcon } = useWordDataContext();
 
     // State for hamburger button to track it's active or inActive stage.
     const [hamActiveState, setHamActiveState] = useState('inActive');
@@ -18,11 +15,11 @@ export default function NavLinks() {
     });
 
     const navLinkDetails = [
-        getLinkDetails('home', '/Dictionary/', homeIcon),
+        getLinkDetails('home', '/Dictionary/', 'fa-solid fa-house'),
 
-        getLinkDetails('search', '/Dictionary/search', searchIcon),
+        getLinkDetails('search', '/Dictionary/search', 'fa-solid fa-magnifying-glass'),
 
-        getLinkDetails('history', '/Dictionary/history', historyIcon),
+        getLinkDetails('history', '/Dictionary/history', 'fa-solid fa-clock-rotate-left'),
     ];
 
     // This function hides the navlinks by setting the hamActiveState to inActive.
@@ -84,12 +81,10 @@ export default function NavLinks() {
                                         end
                                         className={({ isActive }) => `${isActive ? "active" : "inactive"} navLink flex`}
                                         style={{textTransform: 'capitalize'}}
+                                        onClick={hideOptionBtnContainer}
                                     >
 
-                                        <img
-                                            src={linkDetail['icon']}
-                                            alt={linkDetail['name']}
-                                            height={15} />
+                                        <FontAwesomeIcon icon={linkDetail['icon']} />
                                         {linkDetail['name']}
                                     </NavLink>
                                 </li>

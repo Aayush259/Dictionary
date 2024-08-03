@@ -4,6 +4,11 @@ import Loader from './components/Loader.jsx';
 const Header = lazy(() => import('./components/header/Header.jsx'));
 const MainSection = lazy(() => import('./components/main/MainSection.jsx'));
 const Footer = lazy(() => import('./components/footer/Footer.jsx'));
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+
+library.add(fas, fab);
 
 export default function App() {
 
@@ -14,7 +19,7 @@ export default function App() {
   const [userData, setUserData] = useState(initialUserData);
 
   // Theme state.
-  const [theme, setTheme] = useState(userData[0]);
+  const [theme, setTheme] = useState('light');
 
   // Updates the localStorage when the theme or userData updates.
   useEffect(() => {
@@ -23,18 +28,18 @@ export default function App() {
 
   // This function toggle the theme state between light and dark.
   const changeTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
+    // setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
   return (
     <>
-    <div id='body' className={`${theme} flex`}>
-      <Suspense fallback={<Loader />}>
-        <Header theme={theme} changeTheme={changeTheme} />
-        <MainSection theme={theme} setUserData={setUserData} userData={userData} />
-        <Footer theme={theme} />
-      </Suspense>
-    </div>
+      <div id='body' className="flex">
+        <Suspense fallback={<Loader />}>
+          <Header theme={theme} changeTheme={changeTheme} />
+          <MainSection theme={theme} setUserData={setUserData} userData={userData} />
+          <Footer theme={theme} />
+        </Suspense>
+      </div>
     </>
   );
 };

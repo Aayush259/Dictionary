@@ -1,11 +1,8 @@
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useWordDataContext } from '../../contexts/WordDataContext.jsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Input() {
-
-    // Getting search icon from context.
-    const { searchIcon } = useWordDataContext();
 
     // Navigate function.
     const navigate = useNavigate();
@@ -39,10 +36,7 @@ export default function Input() {
                     }}
                 />
                 <button className='searchWordBtn' onClick={handleSearchBtnClick}>
-                    <img
-                        src={searchIcon}
-                        alt="Search"
-                        height={20} />
+                    <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" style={{fontSize: '20px'}} />
                 </button>
             </label>
         </div>

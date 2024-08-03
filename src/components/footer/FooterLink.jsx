@@ -1,10 +1,10 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 
 export default function FooterLink({ linkDetails }) {
 
     // Getting link details.
-    const linkName = linkDetails['linkName'];
     const linkTo = linkDetails['linkTo'];
     const linkIcon = linkDetails['linkIcon'];
 
@@ -14,7 +14,8 @@ export default function FooterLink({ linkDetails }) {
             target="_blank"
             className="socialLink"
         >
-            <img src={linkIcon} alt={linkName} height={25} />
+
+            <FontAwesomeIcon icon={linkIcon} style={{fontSize: '25px', color: 'black'}} />
         </a>
     );
 };
