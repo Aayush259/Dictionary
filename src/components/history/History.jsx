@@ -1,7 +1,7 @@
 import React from 'react';
-import { useWordDataContext } from '../../contexts/WordDataContext';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useWordDataContext } from '../../contexts/WordDataContext.jsx';
 
 export default function History() {
 
@@ -29,16 +29,22 @@ export default function History() {
     // If there is no hisotry yet, then returns a simple message.
     if (userData[1].length <= 0) {
         return (
-            <p className='noHistoryMsg'>Your search history will appear here. 😊</p>
+            <p
+                className="text-center my-20 mx-4 text-xl sm:text-2xl text-violet-900"
+            >
+                Your search history will appear here. 😊
+            </p>
         );
     };
 
     return (
-        <div className='historySection'>
+        <div
+            className="w-[98%] mx-auto"
+        >
 
             <button
-                type='button'
-                className='clearAllBtn'
+                type="button"
+                className="bg-violet-800 text-white py-1 px-3 rounded-3xl font-semibold text-lg hover:bg-violet-600 mb-4"
                 onClick={
                     () => {
                         setUserData(prevData => [prevData[0], []])
@@ -48,20 +54,34 @@ export default function History() {
             </button>
 
             {
-                userData[1].map((data, index) => (
-                    <div className='historyBlock flex' key={index}>
+                userData[1].map(data => (
+                    <div
+                        className="w-full flex items-center justify-between px-4 py-2 text-lg sm:text-xl gap-2 border-b"
+                        key={data["id"]}
+                    >
 
-                        <div className='flex'>
-                            <p className='date'>{
+                        <div
+                            className="flex flex-row flex-wrap items-center gap-4"
+                        >
+                            <p>{
                                 formatDate(data['id'])
                             }</p>
 
-                            <Link to={`/Dictionary/search/${data['word']}`} className='historyWord'>{
-                                data['word'].charAt(0).toUpperCase() + data['word'].slice(1)
-                            }</Link>
+                            <Link
+                                to={`/Dictionary/search/${data['word']}`}
+                                className="capitalize hover:underline underline-offset-4 text-violet-800 font-semibold"
+                            >
+                                {
+                                    data['word']
+                                }
+                            </Link>
                         </div>
 
-                        <button type='button' onClick={() => removeDataItem(data['id'])}>
+                        <button
+                            type='button'
+                            onClick={() => removeDataItem(data['id'])}
+                            className="text-red-600 hover:text-red-900"
+                        >
                             <FontAwesomeIcon icon="fa-solid fa-trash" />
                         </button>
 
