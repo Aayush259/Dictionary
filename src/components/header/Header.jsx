@@ -9,7 +9,7 @@ export default function Header() {
             className="flex flex-wrap w-full items-center justify-between p-4 bg-violet-300 rounded-lg"
         >
             <h1
-                className="text-2xl sm:text-3xl font-semibold"
+                className="text-2xl sm:text-3xl font-semibold text-violet-950"
             >
                 Dictionary
             </h1>

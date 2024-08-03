@@ -35,7 +35,7 @@ export default function App() {
     <>
       <div
         id='body'
-        className="flex flex-col w-[650px] max-w-[95vw] mx-auto my-8 text-slate-950 relative min-h-[80vh]"
+        className="flex flex-col w-[650px] max-w-[95vw] mx-auto my-2 text-slate-950 relative min-h-[80vh]"
       >
         <Suspense fallback={<Loader />}>
           <Header changeTheme={changeTheme} />
