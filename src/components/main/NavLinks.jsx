@@ -66,6 +66,7 @@ export default function NavLinks() {
                                 end
                                 className={({ isActive }) => `${isActive ? "active" : "inactive"} navLink flex
                                 `}
+                                onClick={hideOptionBtnContainer}
                             >
                                 <img src={homeIcon} alt="home" height={14} />
                                 Home
@@ -76,6 +77,7 @@ export default function NavLinks() {
                             <NavLink to={'/Dictionary/search'}
                                 className={({ isActive }) => `${isActive ? "active" : "inactive"} navLink flex
                                 `}
+                                onClick={hideOptionBtnContainer}
                             >
                                 <img src={searchIcon} alt="search" height={14} />
                                 Search
@@ -86,6 +88,7 @@ export default function NavLinks() {
                             <NavLink to={'/Dictionary/history'}
                                 className={({ isActive }) => `${isActive ? "active" : "inactive"} navLink flex
                                 `}
+                                onClick={hideOptionBtnContainer}
                             >
                                 <img src={historyIcon} alt="history" height={15} />
                                 History
