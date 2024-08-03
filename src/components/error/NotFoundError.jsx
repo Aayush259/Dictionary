@@ -8,11 +8,24 @@ export default function NotFoundError({ wordData }) {
   const { searchWordParam } = useParams();
 
   return (
-    <div className='error'>
-        <p className='errorTitle'>{wordData["title"]}</p>
-        <p className='errorDescription'>{wordData["message"]}</p>
-        <p className='errorResolution'>{wordData["resolution"]}</p>
-        <a className='linkToGoogle' href={`https://www.google.com/search?q=${searchWordParam}%20meaning`} target='_blank'>Find on Google - {searchWordParam}</a>
+    <div className="w-[95%] mx-auto text-lg">
+      <p
+        className="text-xl sm:text-2xl text-red-600 my-2"
+      >
+        {wordData["title"]}
+      </p>
+
+      <p>{wordData["message"]}</p>
+
+      <p className="my-2">{wordData["resolution"]}</p>
+
+      <a
+        className="text-violet-950 underline underline-offset-4 hover:text-violet-700"
+        href={`https://www.google.com/search?q=${searchWordParam}%20meaning`}
+        target='_blank'
+      >
+        Find on Google - {searchWordParam}
+      </a>
     </div>
   );
 };
