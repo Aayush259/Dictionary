@@ -15,7 +15,6 @@ export default function Input() {
     */
     const handleSearchBtnClick = () => {
         const wordToSearch = inputRef.current.value.toString();
-        // setSearchWordParam({'word': wordToSearch});
 
         if (wordToSearch) {
             navigate(`/Dictionary/search/${wordToSearch}`);
@@ -23,20 +22,32 @@ export default function Input() {
     };
 
     return (
-        <div className='search'>
-            <label htmlFor="searchWord" className='flex'>
+        <div
+            className="w-[98%] mx-auto my-8"
+        >
+            <label
+                htmlFor="searchWord"
+                className="flex flex-row items-center justify-center bg-violet-200 w-fit mx-auto rounded-3xl"
+            >
                 <input
                     type="text"
                     name="word"
                     id="searchWord"
+                    className="flex-grow bg-transparent text-lg outline-none p-2"
                     placeholder="Search for a word..."
                     ref={inputRef}
                     onKeyDown={(e) => {
                         if (e.key === 'Enter') handleSearchBtnClick()
                     }}
                 />
-                <button className='searchWordBtn' onClick={handleSearchBtnClick}>
-                    <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" style={{fontSize: '20px'}} />
+                <button
+                    className='h-full p-2 rounded-full'
+                    onClick={handleSearchBtnClick}
+                >
+                    <FontAwesomeIcon
+                        icon="fa-solid fa-magnifying-glass"
+                        className="text-xl"
+                    />
                 </button>
             </label>
         </div>
