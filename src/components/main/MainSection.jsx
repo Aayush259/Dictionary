@@ -11,9 +11,9 @@ export default function MainSection({ theme, userData, setUserData }) {
         <WordDataContextProvider value={{ userData, setUserData }}>
             <main className={`main ${theme}`}>
                 <NavLinks />
-                <Suspense fallback={<Loader />}>
+                {/* <Suspense fallback={<Loader />}>
                     <Outlet />
-                </Suspense>
+                </Suspense> */}
             </main>
         </WordDataContextProvider>
     );

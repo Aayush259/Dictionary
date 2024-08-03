@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useEffect, useState } from 'react';
-import './style.css';
+// import './style.css';
 import Loader from './components/Loader.jsx';
 const Header = lazy(() => import('./components/header/Header.jsx'));
 const MainSection = lazy(() => import('./components/main/MainSection.jsx'));
@@ -33,11 +33,14 @@ export default function App() {
 
   return (
     <>
-      <div id='body' className="flex">
+      <div
+        id='body'
+        className="flex flex-col w-[650px] max-w-[95vw] mx-auto my-8 text-slate-950 relative min-h-[80vh]"
+      >
         <Suspense fallback={<Loader />}>
-          <Header theme={theme} changeTheme={changeTheme} />
+          <Header changeTheme={changeTheme} />
           <MainSection theme={theme} setUserData={setUserData} userData={userData} />
-          <Footer theme={theme} />
+          {/* <Footer theme={theme} /> */}
         </Suspense>
       </div>
     </>

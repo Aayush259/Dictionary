@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export default function NavLinks() {
 
     // State for hamburger button to track it's active or inActive stage.
-    const [hamActiveState, setHamActiveState] = useState('inActive');
+    const [hamActiveState, setHamActiveState] = useState(false);
 
     // Reference to the menu.
     const menuRef = useRef();
@@ -24,7 +24,7 @@ export default function NavLinks() {
 
     // This function hides the navlinks by setting the hamActiveState to inActive.
     const hideOptionBtnContainer = () => {
-        setHamActiveState('inActive');
+        setHamActiveState(false);
     };
 
     useEffect(() => {
@@ -50,44 +50,52 @@ export default function NavLinks() {
 
     return (
         <>
-            <div className='menu' ref={menuRef}>
+            <div
+                className="w-[98%] mx-auto my-4 relative"
+                ref={menuRef}
+            >
                 <button
                     type='button'
                     className={`
-                    hamburger flex
-                    ${hamActiveState}
+                    hamburger flex flex-col sm:hidden ml-auto mr-4 mb-4 gap-1
                 `}
                     onClick={(e) => {
-                        setHamActiveState(prevState => prevState === 'inActive' ? 'active' : 'inActive');
+                        setHamActiveState(prevState => !prevState);
                         e.stopPropagation();
                     }}
                 >
-                    <div className='bar'></div>
-                    <div className='bar'></div>
-                    <div className='bar'></div>
+                    {
+                        ["rotate-45 translate-y-[7px]", "opacity-0", "-rotate-45 -translate-y-2"].map(twClass => (
+                            <div
+                            key={twClass}
+                            className={`${hamActiveState ? twClass : ""} w-8 h-1 rounded-full bg-slate-700 duration-200`}
+                            ></div>
+                        ))
+                    }
                 </button>
 
-                <div style={{ position: 'relative' }}>
-                    <div className='optionBtnContainer flex'>
+                <div className="relative">
+                    <div
+                    className={`${hamActiveState ? "opacity-100" : "opacity-0 -z-50 -mt-10 sm:opacity-100 sm:z-auto sm:mt-0"} flex flex-col sm:flex-row text-lg gap-10 absolute sm:static right-4 overflow-hidden duration-200 bg-violet-300 sm:bg-transparent py-4 px-8 rounded-lg`}
+                    >
 
                         {
                             navLinkDetails.map(linkDetail => (
-                                <li
+                                <NavLink
                                     key={linkDetail['name']}
-                                    className={linkDetail['name']}
+                                    to={linkDetail['link']}
+                                    end
+                                    className={({ isActive }) => `
+                                        ${isActive ? "text-violet-700 before:w-full before:left-0" : "before:w-0 before:left-1/2"}
+                                        navLink flex flex-row items-center justify-center gap-2 px-1 relative before:absolute before:block before:h-[3px] before:-bottom-1 before:bg-violet-700 before:rounded-sm before:duration-200 hover:opacity-70 duration-200
+                                    `}
+                                    style={{ textTransform: 'capitalize' }}
+                                    onClick={hideOptionBtnContainer}
                                 >
-                                    <NavLink
-                                        to={linkDetail['link']}
-                                        end
-                                        className={({ isActive }) => `${isActive ? "active" : "inactive"} navLink flex`}
-                                        style={{textTransform: 'capitalize'}}
-                                        onClick={hideOptionBtnContainer}
-                                    >
 
-                                        <FontAwesomeIcon icon={linkDetail['icon']} />
-                                        {linkDetail['name']}
-                                    </NavLink>
-                                </li>
+                                    <FontAwesomeIcon icon={linkDetail['icon']} />
+                                    {linkDetail['name']}
+                                </NavLink>
                             ))
                         }
 
