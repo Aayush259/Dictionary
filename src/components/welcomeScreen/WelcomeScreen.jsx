@@ -3,24 +3,20 @@ import { Link } from 'react-router-dom';
 
 export default function WelcomeScreen() {
 
+    // Function which returns word object.
+    const getWordObject = (title, definition) => ({
+        title, definition
+    });
+
     // Array of objects for initial word cards.
     const wordCards = [
-        {
-            title: `Hello`,
-            definition: `A greeting (salutation) said when meeting someone or acknowledging someone's arrival or presence.`
-        },
-        {
-            title: `Genius`,
-            definition: `Someone possessing extraordinary intelligence or skill; especially somebody who has demonstrated this by a creative or original work in science, music, art etc.`
-        },
-        {
-            title: `Welcome`,
-            definition: `The act of greeting someone's arrival.`
-        },
-        {
-            title: `Mistake`,
-            definition: `An error; a blunder.`
-        }
+        getWordObject(`Hello`, `A greeting (salutation) said when meeting someone or acknowledging someone's arrival or presence.`),
+
+        getWordObject(`Genius`, `Someone possessing extraordinary intelligence or skill; especially somebody who has demonstrated this by a creative or original work in science, music, art etc.`),
+
+        getWordObject(`Welcome`, `The act of greeting someone's arrival.`),
+        
+        getWordObject(`Mistake`, `An error; a blunder.`),
     ];
 
     return (
