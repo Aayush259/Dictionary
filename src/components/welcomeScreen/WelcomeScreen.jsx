@@ -28,10 +28,10 @@ export default function WelcomeScreen() {
                     wordCards.map(card => (
                         <div
                             key={card["title"]}
-                            className="w-64 bg-violet-200 p-4 pb-16 duration-200 rounded-2xl relative"
+                            className="w-64 bg-violet-200 p-4 pb-16 duration-200 rounded-2xl relative dark:bg-violet-900"
                         >
                             <p
-                                className="text-xl font-semibold text-violet-900"
+                                className="text-xl font-semibold text-violet-900 dark:text-violet-100"
                             >
                                 {card["title"]}
                             </p>
@@ -44,7 +44,7 @@ export default function WelcomeScreen() {
 
                             <Link
                                 to={`/Dictionary/search/${card['title']}`}
-                                className="absolute bottom-4 right-4 duration-200 bg-violet-900 text-white px-3 py-1 rounded-3xl hover:bg-violet-700"
+                                className="absolute bottom-4 right-4 duration-200 bg-violet-900 text-white px-3 py-1 rounded-3xl hover:bg-violet-700 dark:bg-slate-950 dark:hover:bg-slate-800"
                             >
                                 Know More
                             </Link>

@@ -1,12 +1,12 @@
 import React, { lazy, Suspense, useEffect, useState } from 'react';
-// import './style.css';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { ThemeContextProvider } from './contexts/ThemeContext.jsx';
 import Loader from './components/Loader.jsx';
 const Header = lazy(() => import('./components/header/Header.jsx'));
 const MainSection = lazy(() => import('./components/main/MainSection.jsx'));
 const Footer = lazy(() => import('./components/footer/Footer.jsx'));
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { fab } from '@fortawesome/free-brands-svg-icons';
 
 library.add(fas, fab);
 
@@ -26,22 +26,21 @@ export default function App() {
     localStorage.setItem('userData', JSON.stringify([theme, ...userData.slice(1)]));
   }, [userData, theme]);
 
-  // This function toggle the theme state between light and dark.
-  const changeTheme = () => {
-    // setTheme(theme === 'light' ? 'dark' : 'light');
-  };
-
   return (
     <>
-      <div
-        id='body'
-        className="flex flex-col w-[650px] max-w-[95vw] mx-auto my-2 text-slate-950 relative min-h-[80vh]"
-      >
-        <Suspense fallback={<Loader />}>
-          <Header changeTheme={changeTheme} />
-          <MainSection theme={theme} setUserData={setUserData} userData={userData} />
-          {/* <Footer theme={theme} /> */}
-        </Suspense>
+      <div className="min-h-screen dark:bg-slate-900 m-0 p-0 overflow-hidden">
+        <div
+          id='body'
+          className="flex flex-col w-[650px] max-w-[95vw] mx-auto my-2 text-slate-950 relative min-h-[80vh] dark:text-violet-200"
+        >
+          <Suspense fallback={<Loader />}>
+            <ThemeContextProvider>
+              <Header />
+            </ThemeContextProvider>
+            <MainSection setUserData={setUserData} userData={userData} />
+            {/* <Footer theme={theme} /> */}
+          </Suspense>
+        </div>
       </div>
     </>
   );

@@ -20,7 +20,7 @@ export default function NotFoundError({ wordData }) {
       <p className="my-2">{wordData["resolution"]}</p>
 
       <a
-        className="text-violet-950 underline underline-offset-4 hover:text-violet-700"
+        className="text-violet-950 underline underline-offset-4 hover:text-violet-700 dark:text-violet-300 dark:hover:opacity-80"
         href={`https://www.google.com/search?q=${searchWordParam}%20meaning`}
         target='_blank'
       >

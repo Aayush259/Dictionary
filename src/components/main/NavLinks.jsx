@@ -68,7 +68,7 @@ export default function NavLinks() {
                         ["rotate-45 translate-y-[7px]", "opacity-0", "-rotate-45 -translate-y-2"].map(twClass => (
                             <div
                             key={twClass}
-                            className={`${hamActiveState ? twClass : ""} w-8 h-1 rounded-full bg-slate-700 duration-200`}
+                            className={`${hamActiveState ? twClass : ""} w-8 h-1 rounded-full bg-slate-700 duration-200 dark:bg-violet-200`}
                             ></div>
                         ))
                     }
@@ -76,7 +76,7 @@ export default function NavLinks() {
 
                 <div className="relative">
                     <div
-                    className={`${hamActiveState ? "opacity-100 z-50" : "opacity-0 -z-50 -mt-10 sm:opacity-100 sm:mt-0"} flex flex-col sm:flex-row text-lg gap-10 absolute sm:static right-4 overflow-hidden duration-200 bg-violet-300 sm:bg-transparent py-4 px-8 rounded-lg`}
+                    className={`${hamActiveState ? "opacity-100 z-50" : "opacity-0 -z-50 -mt-10 sm:opacity-100 sm:mt-0"} flex flex-col sm:flex-row text-lg gap-10 absolute sm:static right-4 overflow-hidden duration-200 bg-violet-300 sm:bg-transparent py-4 px-8 rounded-lg dark:bg-violet-700 sm:dark:bg-transparent`}
                     >
 
                         {
@@ -86,8 +86,8 @@ export default function NavLinks() {
                                     to={linkDetail['link']}
                                     end
                                     className={({ isActive }) => `
-                                        ${isActive ? "text-violet-700 before:w-full before:left-0" : "before:w-0 before:left-1/2"}
-                                        navLink flex flex-row items-center justify-center gap-2 px-1 relative before:absolute before:block before:h-[3px] before:-bottom-1 before:bg-violet-700 before:rounded-sm before:duration-200 hover:opacity-70 duration-200
+                                        ${isActive ? "text-violet-700 dark:text-violet-200 before:w-full before:left-0" : "before:w-0 before:left-1/2"}
+                                        navLink flex flex-row items-center justify-center gap-2 px-1 relative before:absolute before:block before:h-[3px] before:-bottom-1 before:bg-violet-700 dark:before:bg-violet-200 before:rounded-sm before:duration-200 hover:opacity-70 duration-200
                                     `}
                                     style={{ textTransform: 'capitalize' }}
                                     onClick={hideOptionBtnContainer}

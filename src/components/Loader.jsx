@@ -9,7 +9,7 @@ export default function Loader() {
         ['animate-loading1', 'animate-loading2', 'animate-loading3'].map(animation => (
           <div
             key={animation}
-            className={`w-3 h-3 m-1 rounded-full bg-slate-900 opacity-0 ${animation}`}
+            className={`w-3 h-3 m-1 rounded-full bg-slate-900 dark:bg-violet-200 opacity-0 ${animation}`}
           ></div>
         ))
       }

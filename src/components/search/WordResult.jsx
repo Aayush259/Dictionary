@@ -14,10 +14,10 @@ export default function WordResult({ wordData }) {
 
     return (
         <div
-            className="w-[95%] mx-auto mb-10 text-slate-800"
+            className="w-[95%] mx-auto mb-10 text-slate-800 dark:text-violet-100"
         >
             <p
-                className="text-violet-900 capitalize text-2xl sm:text-3xl font-semibold"
+                className="text-violet-900 capitalize text-2xl sm:text-3xl font-semibold dark:text-violet-300"
             >
                 {word}
             </p>
@@ -63,7 +63,7 @@ export default function WordResult({ wordData }) {
                                     className="text-lg sm:text-xl"
                                 >
                                     <p
-                                        className="text-xl sm:text-2xl text-violet-900 capitalize mt-4"
+                                        className="text-xl sm:text-2xl text-violet-900 capitalize mt-4  dark:text-violet-300"
                                     >
                                         🔹{meaning["partOfSpeech"]}
                                     </p>

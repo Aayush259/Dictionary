@@ -30,7 +30,7 @@ export default function History() {
     if (userData[1].length <= 0) {
         return (
             <p
-                className="text-center my-20 mx-4 text-xl sm:text-2xl text-violet-900"
+                className="text-center my-20 mx-4 text-xl sm:text-2xl text-violet-900 dark:text-violet-300"
             >
                 Your search history will appear here. 😊
             </p>
@@ -69,7 +69,7 @@ export default function History() {
 
                             <Link
                                 to={`/Dictionary/search/${data['word']}`}
-                                className="capitalize hover:underline underline-offset-4 text-violet-800 font-semibold"
+                                className="capitalize hover:underline underline-offset-4 text-violet-800 font-semibold dark:text-violet-300"
                             >
                                 {
                                     data['word']

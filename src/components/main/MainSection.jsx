@@ -5,11 +5,11 @@ import { WordDataContextProvider } from '../../contexts/WordDataContext.jsx';
 import NavLinks from './NavLinks.jsx';
 import Loader from '../Loader.jsx';
 
-export default function MainSection({ theme, userData, setUserData }) {
+export default function MainSection({ userData, setUserData }) {
 
     return (
         <WordDataContextProvider value={{ userData, setUserData }}>
-            <main className={`main ${theme}`}>
+            <main>
                 <NavLinks />
                 <Suspense fallback={<Loader />}>
                     <Outlet />
@@ -20,7 +20,6 @@ export default function MainSection({ theme, userData, setUserData }) {
 };
 
 MainSection.propTypes = {
-    theme: PropTypes.string.isRequired,
     userData: PropTypes.array.isRequired,
     setUserData: PropTypes.func.isRequired,
 };

@@ -33,7 +33,7 @@ export default function Input() {
                     type="text"
                     name="word"
                     id="searchWord"
-                    className="flex-grow bg-transparent text-lg outline-none p-2"
+                    className="flex-grow bg-transparent text-lg outline-none p-2 dark:text-violet-950"
                     placeholder="Search for a word..."
                     ref={inputRef}
                     onKeyDown={(e) => {
@@ -46,7 +46,7 @@ export default function Input() {
                 >
                     <FontAwesomeIcon
                         icon="fa-solid fa-magnifying-glass"
-                        className="text-xl"
+                        className="text-xl dark:text-violet-800"
                     />
                 </button>
             </label>
