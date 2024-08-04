@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import FooterLink from './FooterLink.jsx';
 
-export default function Footer({ theme }) {
+export default function Footer() {
 
     // This function generates a link object which contains necessary details about link.
     const getLinkObject = (linkName, linkTo, linkIcon) => ({
@@ -19,8 +18,8 @@ export default function Footer({ theme }) {
     ];
 
     return (
-        <footer className={`footer ${theme}`}>
-            <div className='socialLinksContainer flex'>
+        <footer className="w-full absolute bottom-0 pb-5">
+            <div className="flex items-center justify-center gap-14">
                 
                 {
                     allSocialLinks.map(link => (
@@ -29,11 +28,6 @@ export default function Footer({ theme }) {
                 }
 
             </div>
-            <div className='about'></div>
         </footer>
     );
-};
-
-Footer.propTypes = {
-    theme: PropTypes.string.isRequired,
 };

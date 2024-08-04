@@ -12,10 +12,10 @@ export default function FooterLink({ linkDetails }) {
         <a
             href={linkTo}
             target="_blank"
-            className="socialLink"
+            className="text-violet-800 dark:text-violet-300 text-2xl md:text-3xl"
         >
 
-            <FontAwesomeIcon icon={linkIcon} style={{fontSize: '25px', color: 'black'}} />
+            <FontAwesomeIcon icon={linkIcon} />
         </a>
     );
 };
