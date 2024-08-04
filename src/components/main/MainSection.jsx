@@ -1,14 +1,13 @@
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { WordDataContextProvider } from '../../contexts/WordDataContext.jsx';
 import NavLinks from './NavLinks.jsx';
 import Loader from '../Loader.jsx';
 
-export default function MainSection({ userData, setUserData }) {
+export default function MainSection() {
 
     return (
-        <WordDataContextProvider value={{ userData, setUserData }}>
+        <WordDataContextProvider>
             <main>
                 <NavLinks />
                 <Suspense fallback={<Loader />}>
@@ -17,9 +16,4 @@ export default function MainSection({ userData, setUserData }) {
             </main>
         </WordDataContextProvider>
     );
-};
-
-MainSection.propTypes = {
-    userData: PropTypes.array.isRequired,
-    setUserData: PropTypes.func.isRequired,
 };

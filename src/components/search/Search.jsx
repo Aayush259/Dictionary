@@ -9,7 +9,7 @@ import Loader from '../Loader.jsx';
 export default function Search() {
 
     // Getting outputSection and setHomeLinkActive setter from WordDataContext.
-    const { setUserData } = useWordDataContext();
+    const { addWordInHistory } = useWordDataContext();
 
     // Getting word parameter from URL.
     const { searchWordParam } = useParams();
@@ -20,28 +20,11 @@ export default function Search() {
     // This function will handle fetched data from API and update the user's search history.
     const handleWordData = useCallback((wordData) => {
 
-        // Update user data in local storage.
-        setUserData(prevData => {
-
-            // New object with the word user has searched for.
-            const newObject = {
-                id: Date.now(),
-                word: searchWordParam
-            };
-
-            // Updated array of word history data.
-            const updatedArray = [newObject, ...prevData[1]];
-
-            // If history is greater than 100, then remove the last data object from updatedArray.
-            if (updatedArray.length > 100) {
-                updatedArray.pop();
-            }
-
-            return [prevData[0], updatedArray];
-        });
+        // Update user history.
+        addWordInHistory(searchWordParam);
 
         wordData.title ? setResult(<NotFoundError wordData={wordData} />) : setResult(<WordResult wordData={wordData} />);
-    }, [searchWordParam, setUserData, setResult]);
+    }, [searchWordParam, setResult]);
 
     // This function fetches data from API and update the result on UI.
     const fetchWordData = useCallback((controller) => {
@@ -52,18 +35,22 @@ export default function Search() {
         const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${searchWordParam}`;
 
         fetch(url, { signal: controller.signal })
-        .then(response => response.json())
-        .then(data => handleWordData(data))
-        .catch(err => {
-            console.log('Error:', err);
-            const fetchError = (
-                <div>
-                    <p className='fetchError'>Something went wrong, try again... 😬</p>
-                </div>
-            );
+            .then(response => response.json())
+            .then(data => handleWordData(data))
+            .catch(err => {
+                console.log('Error:', err);
+                const fetchError = (
+                    <div>
+                        <p
+                            className="text-center my-20 mx-4 text-xl sm:text-2xl text-violet-900 dark:text-violet-300"
+                        >
+                            Something went wrong, try again... 😬
+                        </p>
+                    </div>
+                );
 
-            setResult(fetchError);
-        });
+                setResult(fetchError);
+            });
     }, [searchWordParam, setResult]);
 
     // Search for data when the searchWordParam is changed.
@@ -86,10 +73,10 @@ export default function Search() {
 
     return (
         <>
-        <Input />
-        <Suspense fallback={<Loader />}>
-            {result}
-        </Suspense>
+            <Input />
+            <Suspense fallback={<Loader />}>
+                {result}
+            </Suspense>
         </>
     );
 };

@@ -12,20 +12,6 @@ library.add(fas, fab);
 
 export default function App() {
 
-  // Getting initialUserData from local storage. If it is not present then adding default data.
-  const initialUserData = JSON.parse(localStorage.getItem('userData')) || ['dark', []];
-
-  // Initializing a state which will help to update the local storage for userData.
-  const [userData, setUserData] = useState(initialUserData);
-
-  // Theme state.
-  const [theme, setTheme] = useState('light');
-
-  // Updates the localStorage when the theme or userData updates.
-  useEffect(() => {
-    localStorage.setItem('userData', JSON.stringify([theme, ...userData.slice(1)]));
-  }, [userData, theme]);
-
   return (
     <>
       <div className="min-h-screen dark:bg-slate-900 m-0 p-0 overflow-hidden">
@@ -37,7 +23,7 @@ export default function App() {
             <ThemeContextProvider>
               <Header />
             </ThemeContextProvider>
-            <MainSection setUserData={setUserData} userData={userData} />
+            <MainSection />
             {/* <Footer theme={theme} /> */}
           </Suspense>
         </div>
