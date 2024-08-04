@@ -8,7 +8,7 @@ import Loader from '../Loader.jsx';
 
 export default function Search() {
 
-    // Getting outputSection and setHomeLinkActive setter from WordDataContext.
+    // Getting function to add words in history from context.
     const { addWordInHistory } = useWordDataContext();
 
     // Getting word parameter from URL.

@@ -4,16 +4,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function NavLinks() {
 
-    // State for hamburger button to track it's active or inActive stage.
+    // State for hamburger button to track it's active or in active stage.
     const [hamActiveState, setHamActiveState] = useState(false);
 
     // Reference to the menu.
     const menuRef = useRef();
 
+    // Function which returns an object for link icon, name, and URL.
     const getLinkDetails = (name, link, icon) => ({
         name, link, icon
     });
 
+    // Array of all navigation links.
     const navLinkDetails = [
         getLinkDetails('home', '/Dictionary/', 'fa-solid fa-house'),
 
@@ -22,7 +24,7 @@ export default function NavLinks() {
         getLinkDetails('history', '/Dictionary/history', 'fa-solid fa-clock-rotate-left'),
     ];
 
-    // This function hides the navlinks by setting the hamActiveState to inActive.
+    // This function hides the navlinks.
     const hideOptionBtnContainer = () => {
         setHamActiveState(false);
     };

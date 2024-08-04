@@ -5,6 +5,7 @@ import { useWordDataContext } from '../../contexts/WordDataContext.jsx';
 
 export default function History() {
 
+    // Getting userData and functions to manage it from context.
     const { userData, removeWordFromHistory, clearHistory } = useWordDataContext();
 
     // This function returns the date in the format dd-mm-yyyy from the passed milliseconds.
