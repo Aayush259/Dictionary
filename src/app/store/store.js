@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
-import themeSlice from '../features/themeSlice.js';
-import historySlice from '../features/historySlice.js';
+import theme from '../features/themeSlice.js';
+import history from '../features/historySlice.js';
+import themeMiddleWare from '../middleware/themeMiddleWare.js';
 
 const store = configureStore({
     reducer: {
-        themeSlice,
-        historySlice,
+        theme,
+        history,
     },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([themeMiddleWare]),
 });
 
 export default store;

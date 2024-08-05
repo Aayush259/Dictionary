@@ -1,12 +1,14 @@
 import React from 'react';
 import photo from '../../images/photo.jpeg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useTheme } from '../../contexts/ThemeContext.jsx';
+import { useDispatch } from 'react-redux';
+import { changeTheme } from '../../app/features/themeSlice.js';
 
 export default function Header() {
 
     // Getting function to change theme from context.
-    const { changeTheme } = useTheme();
+    // const { changeTheme } = useTheme();
+    const dispatch = useDispatch();
 
     return (
         <header
@@ -21,7 +23,7 @@ export default function Header() {
             <div
                 className="flex items-center justify-center gap-4"
             >
-                <button onClick={changeTheme}>
+                <button onClick={() => dispatch(changeTheme())}>
                     <FontAwesomeIcon
                         icon="fa-solid fa-moon"
                         className="text-xl -rotate-[25deg]"
