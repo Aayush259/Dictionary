@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, useCallback, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useWordDataContext } from '../../contexts/WordDataContext.jsx';
+import { useDispatch } from 'react-redux';
+import { addWordInHistory } from '../../app/features/historySlice.js';
 const Input = lazy(() => import('./Input.jsx'));
 const WordResult = lazy(() => import('./WordResult.jsx'));
 const NotFoundError = lazy(() => import('../error/NotFoundError.jsx'));
@@ -8,8 +9,7 @@ import Loader from '../Loader.jsx';
 
 export default function Search() {
 
-    // Getting function to add words in history from context.
-    const { addWordInHistory } = useWordDataContext();
+    const dispatch = useDispatch();
 
     // Getting word parameter from URL.
     const { searchWordParam } = useParams();
@@ -21,7 +21,7 @@ export default function Search() {
     const handleWordData = useCallback((wordData) => {
 
         // Update user history.
-        addWordInHistory(searchWordParam);
+        dispatch(addWordInHistory(searchWordParam));
 
         wordData.title ? setResult(<NotFoundError wordData={wordData} />) : setResult(<WordResult wordData={wordData} />);
     }, [searchWordParam, setResult]);

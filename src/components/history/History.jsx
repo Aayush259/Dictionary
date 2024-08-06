@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useWordDataContext } from '../../contexts/WordDataContext.jsx';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearHistory, removeWordFromHistory } from '../../app/features/historySlice.js';
 
 export default function History() {
 
-    // Getting userData and functions to manage it from context.
-    const { userData, removeWordFromHistory, clearHistory } = useWordDataContext();
+    // Getting history from store.
+    const history = useSelector(state => state.history.value);
+
+    const dispatch = useDispatch();
 
     // This function returns the date in the format dd-mm-yyyy from the passed milliseconds.
     const formatDate = (milliseconds) => {
@@ -22,7 +25,7 @@ export default function History() {
     };
 
     // If there is no hisotry yet, then returns a simple message.
-    if (userData.length <= 0) {
+    if (history.length <= 0) {
         return (
             <p
                 className="text-center my-20 mx-4 text-xl sm:text-2xl text-violet-900 dark:text-violet-300"
@@ -40,13 +43,13 @@ export default function History() {
             <button
                 type="button"
                 className="bg-violet-800 text-white py-1 px-3 rounded-3xl font-semibold text-lg hover:bg-violet-600 mb-4"
-                onClick={clearHistory}
+                onClick={() => dispatch(clearHistory())}
             >
                 Clear All
             </button>
 
             {
-                [...userData].reverse().map(data => (
+                [...history].reverse().map(data => (
                     <div
                         className="w-full flex items-center justify-between px-4 py-2 text-lg sm:text-xl gap-2 border-b"
                         key={data["id"]}
@@ -56,7 +59,7 @@ export default function History() {
                             className="flex flex-row flex-wrap items-center gap-4"
                         >
                             <p>{
-                                formatDate(data['id'])
+                                formatDate(data['date'])
                             }</p>
 
                             <Link
@@ -71,7 +74,7 @@ export default function History() {
 
                         <button
                             type='button'
-                            onClick={() => removeWordFromHistory(data['id'])}
+                            onClick={() => dispatch(removeWordFromHistory(data['id']))}
                             className="text-red-600 hover:text-red-900"
                         >
                             <FontAwesomeIcon icon="fa-solid fa-trash" />
