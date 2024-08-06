@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { addInHistory, clear, removeFromHistory } from '../reducers/historyReducers.js';
 
 const initialState = {
-    value: JSON.parse(localStorage.getItem('userHistory')) || [],
+    value: JSON.parse(localStorage.getItem('userDictHistory')) || [],
 };
 
 // Creating user's history slice.
