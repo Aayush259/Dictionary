@@ -12,12 +12,19 @@ This is a React-based web application designed to help users look up words, view
 ## 🚀 Usage
 
 🔹 Type a word in the search bar and press Enter or click the search button.
+<br />
 🔹 View the word's definition, phonetics, synonyms, antonyms, and examples.
+<br />
 🔹 If word not found, then click on the *Google Link* to browse it on google.
+<br />
 🔹 Toggle between light and dark themes using the theme switcher in the header.
+<br />
 🔹 Click on previously searched words in the history section to view their details.
+<br />
 🔹 Click on trash icon to remove the word from history.
+<br />
 🔹 Click on Clear All button to clear complete history.
+<br />
 
 ## 🛠️ Technologies Used
 
@@ -29,11 +36,9 @@ This is a React-based web application designed to help users look up words, view
 
 ## 🖼️ Screenshots
 
-<p align='center'>
-  <img src='src/images/s1-Home-dark.png' alt='Home in dark theme' width='500' />
+![Home Page Dark Theme](src/images/s1-Home-dark.png)
 
-  <img src='src/images/s2-Home-light.png' alt='Home in light theme' width='500' />
-</p>
+![Home Page Light Theme](src/images/s2-Home-light.png)
 
 ![Search screenshot](src/images/s3-Search.png)
 
