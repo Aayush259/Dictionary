@@ -23,7 +23,7 @@ export default function Header() {
             <div
                 className="flex items-center justify-center gap-4"
             >
-                <button onClick={() => dispatch(changeTheme())}>
+                <button onClick={() => dispatch(changeTheme())} aria-label='Toggle theme'>
                     <FontAwesomeIcon
                         icon="fa-solid fa-moon"
                         className="text-xl -rotate-[25deg]"

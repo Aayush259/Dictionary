@@ -43,6 +43,7 @@ export default function Input() {
                 <button
                     className='h-full p-2 rounded-full'
                     onClick={handleSearchBtnClick}
+                    aria-label='search'
                 >
                     <FontAwesomeIcon
                         icon="fa-solid fa-magnifying-glass"

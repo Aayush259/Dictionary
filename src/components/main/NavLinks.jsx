@@ -65,12 +65,13 @@ export default function NavLinks() {
                         setHamActiveState(prevState => !prevState);
                         e.stopPropagation();
                     }}
+                    aria-label='toggle hamburger'
                 >
                     {
                         ["rotate-45 translate-y-[7px]", "opacity-0", "-rotate-45 -translate-y-2"].map(twClass => (
                             <div
-                            key={twClass}
-                            className={`${hamActiveState ? twClass : ""} w-8 h-1 rounded-full bg-slate-700 duration-200 dark:bg-violet-200`}
+                                key={twClass}
+                                className={`${hamActiveState ? twClass : ""} w-8 h-1 rounded-full bg-slate-700 duration-200 dark:bg-violet-200`}
                             ></div>
                         ))
                     }
@@ -78,7 +79,7 @@ export default function NavLinks() {
 
                 <div className="relative">
                     <div
-                    className={`${hamActiveState ? "opacity-100 z-50" : "opacity-0 -z-50 -mt-10 sm:opacity-100 sm:mt-0"} flex flex-col sm:flex-row text-lg gap-10 absolute sm:static right-4 overflow-hidden duration-200 bg-violet-300 sm:bg-transparent py-4 px-8 rounded-lg dark:bg-violet-700 sm:dark:bg-transparent`}
+                        className={`${hamActiveState ? "opacity-100 z-50" : "opacity-0 -z-50 -mt-10 sm:opacity-100 sm:mt-0"} flex flex-col sm:flex-row text-lg gap-10 absolute sm:static right-4 overflow-hidden duration-200 bg-violet-300 sm:bg-transparent py-4 px-8 rounded-lg dark:bg-violet-700 sm:dark:bg-transparent`}
                     >
 
                         {

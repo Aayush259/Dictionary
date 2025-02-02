@@ -44,6 +44,7 @@ export default function History() {
                 type="button"
                 className="bg-violet-800 text-white py-1 px-3 rounded-3xl font-semibold text-lg hover:bg-violet-600 mb-4"
                 onClick={() => dispatch(clearHistory())}
+                aria-label='Clear history'
             >
                 Clear All
             </button>
@@ -76,6 +77,7 @@ export default function History() {
                             type='button'
                             onClick={() => dispatch(removeWordFromHistory(data['id']))}
                             className="text-red-600 hover:text-red-900"
+                            aria-label='Remove from history'
                         >
                             <FontAwesomeIcon icon="fa-solid fa-trash" />
                         </button>

@@ -39,6 +39,7 @@ export default function WordResult({ wordData }) {
                                         <button
                                             className="h-5 w-5"
                                             onClick={() => { setAudioPlayingIndex(index) }}
+                                            aria-label='Listen pronunciation'
                                         >
                                             <FontAwesomeIcon
                                                 icon="fa-solid fa-volume-high"
