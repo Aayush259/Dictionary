@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 export default function FooterLink({ linkDetails }) {
 
     // Getting link details.
+    const linkName = linkDetails['linkName'];
     const linkTo = linkDetails['linkTo'];
     const linkIcon = linkDetails['linkIcon'];
 
@@ -13,6 +14,7 @@ export default function FooterLink({ linkDetails }) {
             href={linkTo}
             target="_blank"
             className="text-violet-800 dark:text-violet-300 text-2xl md:text-3xl"
+            aria-label={linkName}
         >
 
             <FontAwesomeIcon icon={linkIcon} />
