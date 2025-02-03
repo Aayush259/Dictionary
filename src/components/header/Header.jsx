@@ -1,5 +1,5 @@
 import React from 'react';
-import photo from '../../images/photo.jpeg';
+import photo from '../../images/photo.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch } from 'react-redux';
 import { changeTheme } from '../../app/features/themeSlice.js';
@@ -33,6 +33,8 @@ export default function Header() {
                 <img
                     src={photo}
                     alt="Author"
+                    height={40}
+                    width={40}
                     className="h-10 rounded-full"
                 />
             </div>
